@@ -28,7 +28,7 @@
 
 <% content_for :og do %>
 	<meta property="fb:app_id"      content="<%= FB_APP_ID %>" /> 
-	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:article" /> 
+	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:entry" /> 
 	<meta property="og:url"         content="<%= request.url %>" /> 
 	<meta property="og:title"       content="<%= @entry.title %>" /> 
 	<meta property="og:description" content="<%= @entry.body %>" /> 
