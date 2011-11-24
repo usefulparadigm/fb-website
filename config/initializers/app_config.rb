@@ -1,0 +1,5 @@
+AppConfig = {}
+
+FB_APP_ID = "247802248612172"
+FB_APP_SECRET = "d24387a262a8235e3f38a76aad9dd883"
+FB_APP_NAMESPACE = "platanus"

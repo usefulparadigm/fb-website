@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  layout 'facebook'
+  
   # GET /entries
   # GET /entries.xml
   def index

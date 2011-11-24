@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<!-- <h3>
+    <font size="30" face="verdana" color="grey">
+        Stuffed Cookies
+    </font> 
+</h3> 
+<p>
+    <img title="Stuffed Cookies" 
+            src="http://example.com/cookie.jpg" 
+            width="550"/>
+</p>        -->
+
 <p>
   <b>Title:</b>
   <%= @entry.title %>
@@ -10,6 +21,16 @@
   <%= @entry.body %>
 </p>
 
+<div class="fb-add-to-timeline" data-show-faces="true" data-mode="button"></div>
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>
+
+<% content_for :og do %>
+	<meta property="fb:app_id"      content="<%= FB_APP_ID %>" /> 
+	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:article" /> 
+	<meta property="og:url"         content="<%= request.url %>" /> 
+	<meta property="og:title"       content="<%= @entry.title %>" /> 
+	<meta property="og:description" content="<%= @entry.body %>" /> 
+	<meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
+<% end %>	
