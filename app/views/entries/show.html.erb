@@ -1,7 +1,7 @@
 <script type="text/javascript">
 function postEntry() {
   FB.api('/me/<%= FB_APP_NAMESPACE %>:read' + 
-              '?entry=<%= request.url %>','post',
+              '?article=<%= request.url %>','post',
               function(response) {
       if (!response || response.error) {
               alert('Error occured');
@@ -41,7 +41,7 @@ function postEntry() {
 
 <% content_for :og do %>
 	<meta property="fb:app_id"      content="<%= FB_APP_ID %>" /> 
-	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:entry" /> 
+	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:article" /> 
 	<meta property="og:url"         content="<%= request.url %>" /> 
 	<meta property="og:title"       content="<%= @entry.title %>" /> 
 	<meta property="og:description" content="<%= @entry.body %>" /> 
