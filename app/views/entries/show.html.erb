@@ -1,7 +1,7 @@
 <script type="text/javascript">
 function postEntry() {
   FB.api('/me/<%= FB_APP_NAMESPACE %>:read' + 
-              '?article=<%= request.url %>','post',
+              '?entry=<%= request.url %>','post',
               function(response) {
       if (!response || response.error) {
               alert('Error occured');
@@ -36,12 +36,15 @@ function postEntry() {
 	<input type="button" value="Read" onclick="postEntry()" />
 </form>
 
+<fb:activity actions="<%= FB_APP_NAMESPACE %>:entry"></fb:activity>
+
+
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>
 
 <% content_for :og do %>
 	<meta property="fb:app_id"      content="<%= FB_APP_ID %>" /> 
-	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:article" /> 
+	<meta property="og:type"        content="<%= FB_APP_NAMESPACE %>:entry" /> 
 	<meta property="og:url"         content="<%= request.url %>" /> 
 	<meta property="og:title"       content="<%= @entry.title %>" /> 
 	<meta property="og:description" content="<%= @entry.body %>" /> 
