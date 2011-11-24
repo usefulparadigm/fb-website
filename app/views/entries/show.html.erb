@@ -1,27 +1,40 @@
+<script type="text/javascript">
+function postEntry() {
+  FB.api('/me/<%= FB_APP_NAMESPACE %>:read' + 
+              '?entry=<%= request.url %>','post',
+              function(response) {
+      if (!response || response.error) {
+              alert('Error occured');
+      } else {
+          alert('Entry was successful! Action ID: ' + response.id);
+          }
+  });
+}
+</script>
+
 <p id="notice"><%= notice %></p>
 
-<!-- <h3>
+<fb:add-to-timeline></fb:add-to-timeline>
+<!-- <div class="fb-add-to-timeline" data-show-faces="true" data-mode="button"></div> -->
+
+
+<h3>
     <font size="30" face="verdana" color="grey">
-        Stuffed Cookies
+		  <%= @entry.title %>
     </font> 
 </h3> 
-<p>
+<!-- <p>
     <img title="Stuffed Cookies" 
             src="http://example.com/cookie.jpg" 
             width="550"/>
 </p>        -->
 
 <p>
-  <b>Title:</b>
-  <%= @entry.title %>
-</p>
-
-<p>
-  <b>Body:</b>
   <%= @entry.body %>
 </p>
-
-<div class="fb-add-to-timeline" data-show-faces="true" data-mode="button"></div>
+<form>
+	<input type="button" value="Read" onclick="postEntry()" />
+</form>
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>
